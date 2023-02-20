@@ -33,31 +33,31 @@ Commands/EcoGuiCommand.java
  Commands.EcoGuiCommand
 Menus/CursePage.java
  Menus.CursePage
+Main/Main.java
+ Main.Main
 NewEvents/BookDragEvent.java
  NewEvents.BookDragEvent
  NewEvents.BookDragEvent$1
-Main/Main.java
- Main.Main
 NewEvents/SpellPageClickEvent.java
  NewEvents.SpellPageClickEvent
 Utils/MessageUtils.java
  Utils.MessageUtils
 NewEvents/MainMenuClickEvent.java
  NewEvents.MainMenuClickEvent
-NewEvents/SpecialPageClickEvent.java
- NewEvents.SpecialPageClickEvent
 Menus/SpellPage.java
  Menus.SpellPage
+NewEvents/SpecialPageClickEvent.java
+ NewEvents.SpecialPageClickEvent
 Menus/MainMenu.java
  Menus.MainMenu
 Menus/SpecialPage.java
  Menus.SpecialPage
 Commands/TabComplete.java
  Commands.TabComplete
-NewEvents/NormalPageClickEvent.java
- NewEvents.NormalPageClickEvent
 NewEvents/DatabaseLoadEvent.java
  NewEvents.DatabaseLoadEvent
+NewEvents/NormalPageClickEvent.java
+ NewEvents.NormalPageClickEvent
 NewEvents/PlayerChatSearchEvent.java
  NewEvents.PlayerChatSearchEvent
  NewEvents.PlayerChatSearchEvent$1

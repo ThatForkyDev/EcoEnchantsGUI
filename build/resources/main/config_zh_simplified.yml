@@ -1,0 +1,627 @@
+settings:
+  ignore-disabled-enchantments: true
+  allow-taking-books-from-menu: true
+  apply-separator: "、"
+  conflicts-separator: "、"
+  search-in: # Available options: "NAME", "DESCRIPTION", "APPLICATION", "CONFLICTS", "RARITY"
+    - "NAME"
+    - "DESCRIPTION"
+    - "APPLICATION"
+    - "CONFLICTS"
+    - "RARITY"
+
+messages:
+  no-permission: "chat! &8(&c&l!&8) &7权限不足！" #chat! actionbar! title!
+  plugin-reloaded: "chat! &8(&6&l!&8) &7插件已成功重载！"
+  awaiting-query: "title! <$#0C9C29>在聊天栏中发送搜索内容<$#0ED42C>"
+  no-conflicts: "&c无"
+  enchantment-targets:
+    all: "无限制"
+    helmet: "头盔"
+    chestplate: "胸甲"
+    leggings: "护腿"
+    boots: "靴子"
+    sword: "剑"
+    axe: "斧"
+    pickaxe: "镐"
+    shovel: "锹"
+    hoe: "锄"
+    trident: "三叉戟"
+    bow: "弓"
+    crossbow: "弩"
+    shears: "剪刀"
+    rod: "钓鱼竿"
+    elytra: "鞘翅"
+    flintandsteel: "打火石"
+    shield: "盾牌"
+    book: "书"
+    carrot_stick: "胡萝卜钓竿"
+  rarity:
+    common: "&7普通"
+    uncommon: "&3罕见"
+    rare: "&b珍稀"
+    epic: "&5史诗"
+    legendary: "&6传奇"
+    special: "&5&l特殊"
+    veryspecial: "&c&l极致特殊"
+    mycustomrarity: "&6我的自定义稀有度"
+  booleans:
+    true: "&a√"
+    false: "&c×"
+
+menus:
+  main:
+    title: "<$#0C9C29>EcoEnchantsGUI<$#0ED42C>"
+    size: 45
+    buttons:
+      # Custom button example:
+      # mycustombutton:
+      #   material: DIAMOND
+      #   name: "&bYay, my diamond :D"
+      #   lore:
+      #     - "&cThat my diamond!!! >:("
+      #   type: MISC -> just to do nothing on click
+      #   slots: [25]
+      #   glowing: true -> a shiny diamond :D
+      normal:
+        material: "BLACK_STAINED_GLASS_PANE" #Material of the button
+        name: "&7常规附魔" # The display name if the button
+        lore:
+          - ""
+          - "&6点击&f查看所有&7常规&f附魔"
+          - ""
+        type: MENU_NORMAL
+        slots: [ 10 ]
+        glowing: false
+        custom-model-data: -1
+      special:
+        material: MAGENTA_STAINED_GLASS_PANE #Material of the button
+        name: "&5特殊附魔" # The display name if the button
+        lore:
+          - ""
+          - "&6点击&f查看所有&5特殊&f附魔"
+          - ""
+        type: MENU_SPECIAL
+        slots: [ 13 ]
+        glowing: false
+        custom-model-data: -1
+      curse:
+        material: RED_STAINED_GLASS_PANE #Material of the button
+        name: "&c诅咒" # The display name if the button
+        lore:
+          - ""
+          - "&6点击&f查看所有&c诅咒"
+          - ""
+        type: MENU_CURSE
+        slots: [ 11 ]
+        glowing: false
+        custom-model-data: -1
+      spell:
+        material: BLUE_STAINED_GLASS_PANE #Material of the button
+        name: "&b魔咒" # The display name if the button
+        lore:
+          - ""
+          - "&6点击&f查看所有&b魔咒"
+          - ""
+        type: MENU_SPELL
+        slots: [ 16 ]
+        glowing: false
+        custom-model-data: -1
+      artifact:
+        material: YELLOW_STAINED_GLASS_PANE #Material of the button
+        name: "&e粒子视效" # The display name if the button
+        lore:
+          - ""
+          - "&6点击&f查看所有&e粒子视效"
+          - ""
+        type: MENU_ARTIFACT
+        slots: [ 15 ]
+        glowing: false
+        custom-model-data: -1
+
+      exit: # Name of the menu. Can be whatever you want
+        material: CLOCK #Material of the button
+        name: "&c退出" # The display name if the button
+        lore:
+          - ""
+          - "&6点击&f以关闭该菜单"
+          - ""
+        type: EXIT
+        slots: [ 30 ]
+        glowing: true
+        custom-model-data: -1
+      misc:
+        material: GRAY_STAINED_GLASS_PANE
+        name: "&7"
+        lore: [ ]
+        type: MISC
+        slots: [ 0,1,2,3,4,5,6,7,8,9,12,14,17,18,19,20,21,22,23,24,25,26,27,28,29,31,33,34,35,36,37,38,39,40,41,42,43,44 ]
+        glowing: false
+        custom-model-data: -1
+      search:
+        material: COMPASS #Material of the button
+        name: "&3搜索" # The display name if the button
+        lore:
+          - ""
+          - "&6点击&f以进行搜索"
+          - ""
+        type: SEARCH
+        slots: [ 32 ]
+        glowing: true
+        custom-model-data: -1
+  page-normal:
+    title: "&8常规附魔 | &c{page}&8/&c{maxpages}"
+    size: 54
+    buttons:
+      enchantment:
+        material: 'head:eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYWM5MmU1MTExZWE3ZDdlYjNmMDU1ODMzZTFmMzVkNjUxYzBkYTU1NjQzYzkzODNlMGJjZTZjMjM2OTZkNThiOSJ9fX0='
+        name: "&7{name} &8lvl.{max-level}"
+        lore:
+          - ""
+          - "&8稀有度：{rarity}"
+          - ""
+          - "&f{description}"
+          - ""
+          - "&8适用于："
+          - "&b{apply-on}"
+          - " "
+          - "&8冲突："
+          - "&c{conflicts}"
+          - ""
+          - "&8获取方式："
+          - " &6* &7附魔台：&r{enchantment_table}"
+          - " &6* &7村民交易：&r{villager_trading}"
+          - " &6* &7世界战利品：&r{world_loot}"
+          - ""
+          - "&8砂轮祛魔：&r{grindstonable}"
+          - ""
+        type: ENCHANTMENT
+        slots: [10,11,12,13,14,15,16,19,20,21,22,23,24,25,28,29,30,31,32,33,34,37,38,39,40,41,42,43]
+        glowing: false
+        custom-model-data: -1
+      misc:
+        material: BLACK_STAINED_GLASS_PANE
+        name: "&7"
+        lore: []
+        type: MISC
+        slots: [0,1,2,3,4,5,6,7,8,9,17,18,26,27,35,36,44,45,46,47,51,52,53]
+        glowing: false
+        custom-model-data: -1
+      next-page:
+        material-active: LIME_STAINED_GLASS_PANE
+        material-inactive: GRAY_STAINED_GLASS_PANE
+        name-active: "&a下一页"
+        name-inactive: "&8下一页"
+        lore-active:
+          - ""
+          - "&6点击&f翻至下一页"
+          - ""
+        lore-inactive: []
+        type: NEXTPAGE
+        slots: [50]
+        glowing-active: false
+        glowing-inactive: false
+        custom-model-data: -1
+      prev-page:
+        material-active: LIME_STAINED_GLASS_PANE
+        material-inactive: GRAY_STAINED_GLASS_PANE
+        name-active: "&a上一页"
+        name-inactive: "&8上一页"
+        lore-active:
+          - ""
+          - "&6点击&f翻至上一页"
+          - ""
+        lore-inactive: []
+        type: PREVPAGE
+        slots: [48]
+        glowing-active: false
+        glowing-inactive: false
+        custom-model-data: -1
+      back:
+        material: ORANGE_STAINED_GLASS_PANE
+        name: "&6返回主菜单"
+        lore:
+          - ""
+          - "&6点击&f以返回主菜单界面"
+          - ""
+        type: BACK
+        slots: [49]
+        glowing: false
+        custom-model-data: -1
+  page-curse:
+    title: "&c诅咒 | &c{page}&8/&c{maxpages}"
+    size: 54
+    buttons:
+      enchantment:
+        material: 'head:eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTNhNjljM2NhYTMxMzA0ZTk5NTIzMjhjNzJjZWUwYjU3YjJhMmJkNDZjZTljNWNiODhjMDdkMTI2NjI3N2Q2YSJ9fX0='
+        name: "&c{name} &8lvl.{max-level}"
+        lore:
+          - ""
+          - "&8稀有度：{rarity}"
+          - ""
+          - "&f{description}"
+          - ""
+          - "&8适用于："
+          - "&b{apply-on}"
+          - " "
+          - "&8冲突："
+          - "&c{conflicts}"
+          - ""
+          - "&8获取方式："
+          - " &6* &7附魔台：&r{enchantment_table}"
+          - " &6* &7村民交易：&r{villager_trading}"
+          - " &6* &7世界战利品：&r{world_loot}"
+          - ""
+          - "&8砂轮祛魔：&r{grindstonable}"
+          - ""
+        type: ENCHANTMENT
+        slots: [10,11,12,13,14,15,16,19,20,21,22,23,24,25,28,29,30,31,32,33,34,37,38,39,40,41,42,43]
+        glowing: false
+        custom-model-data: -1
+      misc:
+        material: RED_STAINED_GLASS_PANE
+        name: "&7"
+        lore: [ ]
+        type: MISC
+        slots: [ 0,1,2,3,4,5,6,7,8,9,17,18,26,27,35,36,44,45,46,47,51,52,53 ]
+        glowing: false
+        custom-model-data: -1
+      next-page:
+        material-active: LIME_STAINED_GLASS_PANE
+        material-inactive: GRAY_STAINED_GLASS_PANE
+        name-active: "&a下一页"
+        name-inactive: "&8下一页"
+        lore-active:
+          - ""
+          - "&6点击&f翻至下一页"
+          - ""
+        lore-inactive: [ ]
+        type: NEXTPAGE
+        slots: [ 50 ]
+        glowing-active: false
+        glowing-inactive: false
+        custom-model-data: -1
+      prev-page:
+        material-active: LIME_STAINED_GLASS_PANE
+        material-inactive: GRAY_STAINED_GLASS_PANE
+        name-active: "&a上一页"
+        name-inactive: "&8上一页"
+        lore-active:
+          - ""
+          - "&6点击&f翻至上一页"
+          - ""
+        lore-inactive: [ ]
+        type: PREVPAGE
+        slots: [ 48 ]
+        glowing-active: false
+        glowing-inactive: false
+        custom-model-data: -1
+      back:
+        material: ORANGE_STAINED_GLASS_PANE
+        name: "&6返回主菜单"
+        lore:
+          - ""
+          - "&6点击&f以返回主菜单界面"
+          - ""
+        type: BACK
+        slots: [ 49 ]
+        glowing: false
+        custom-model-data: -1
+  page-special:
+    title: "&5特殊附魔 | &c{page}&8/&c{maxpages}"
+    size: 54
+    buttons:
+      enchantment:
+        material: 'head:eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzJlYTg1Yzg1ZmUwNDg0YWY2YzgxNWVmYjY1NWQyYjIxZTEwOTg2M2M5NjMzM2I5MjgwYjU5YjgwZDZhYzk4ZiJ9fX0='
+        name: "&5{name} &8lvl.{max-level}"
+        lore:
+          - ""
+          - "&8稀有度：{rarity}"
+          - ""
+          - "&f{description}"
+          - ""
+          - "&8适用于："
+          - "&b{apply-on}"
+          - " "
+          - "&8冲突："
+          - "&c{conflicts}"
+          - ""
+          - "&8获取方式："
+          - " &6* &7附魔台：&r{enchantment_table}"
+          - " &6* &7村民交易：&r{villager_trading}"
+          - " &6* &7世界战利品：&r{world_loot}"
+          - ""
+          - "&8砂轮祛魔：&r{grindstonable}"
+          - ""
+        type: ENCHANTMENT
+        slots: [ 10,11,12,13,14,15,16,19,20,21,22,23,24,25,28,29,30,31,32,33,34,37,38,39,40,41,42,43 ]
+        glowing: false
+        custom-model-data: -1
+      misc:
+        material: MAGENTA_STAINED_GLASS_PANE
+        name: "&7"
+        lore: [ ]
+        type: MISC
+        slots: [ 0,1,2,3,4,5,6,7,8,9,17,18,26,27,35,36,44,45,46,47,51,52,53 ]
+        glowing: false
+        custom-model-data: -1
+      next-page:
+        material-active: LIME_STAINED_GLASS_PANE
+        material-inactive: GRAY_STAINED_GLASS_PANE
+        name-active: "&a下一页"
+        name-inactive: "&8下一页"
+        lore-active:
+          - ""
+          - "&6点击&f翻至下一页"
+          - ""
+        lore-inactive: [ ]
+        type: NEXTPAGE
+        slots: [ 50 ]
+        glowing-active: false
+        glowing-inactive: false
+        custom-model-data: -1
+      prev-page:
+        material-active: LIME_STAINED_GLASS_PANE
+        material-inactive: GRAY_STAINED_GLASS_PANE
+        name-active: "&a上一页"
+        name-inactive: "&8上一页"
+        lore-active:
+          - ""
+          - "&6点击&f翻至上一页"
+          - ""
+        lore-inactive: [ ]
+        type: PREVPAGE
+        slots: [ 48 ]
+        glowing-active: false
+        glowing-inactive: false
+        custom-model-data: -1
+      back:
+        material: ORANGE_STAINED_GLASS_PANE
+        name: "&6返回主菜单"
+        lore:
+          - ""
+          - "&6点击&f以返回主菜单界面"
+          - ""
+        type: BACK
+        slots: [ 49 ]
+        glowing: false
+        custom-model-data: -1
+  page-artifact:
+    title: "&e粒子视效 | &c{page}&8/&c{maxpages}"
+    size: 54
+    buttons:
+      enchantment:
+        material: 'head:eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDUzZmExYjU3ZTRmNzg0ZDE2ZTVhMmRhYTJmNzQ2YjJlY2ZlNjI0Y2NkNzRhNGQ0YWNjNmEyZTZhMDgzZjU0ZSJ9fX0='
+        name: "&e{name} &8lvl.{max-level}"
+        lore:
+          - ""
+          - "&8稀有度：{rarity}"
+          - ""
+          - "&f{description}"
+          - ""
+          - "&8适用于："
+          - "&b{apply-on}"
+          - " "
+          - "&8冲突："
+          - "&c{conflicts}"
+          - ""
+          - "&8获取方式："
+          - " &6* &7附魔台：&r{enchantment_table}"
+          - " &6* &7村民交易：&r{villager_trading}"
+          - " &6* &7世界战利品：&r{world_loot}"
+          - ""
+          - "&8砂轮祛魔：&r{grindstonable}"
+          - ""
+        type: ENCHANTMENT
+        slots: [ 10,11,12,13,14,15,16,19,20,21,22,23,24,25,28,29,30,31,32,33,34,37,38,39,40,41,42,43 ]
+        glowing: false
+        custom-model-data: -1
+      misc:
+        material: YELLOW_STAINED_GLASS_PANE
+        name: "&7"
+        lore: [ ]
+        type: MISC
+        slots: [ 0,1,2,3,4,5,6,7,8,9,17,18,26,27,35,36,44,45,46,47,51,52,53 ]
+        glowing: false
+        custom-model-data: -1
+      next-page:
+        material-active: LIME_STAINED_GLASS_PANE
+        material-inactive: GRAY_STAINED_GLASS_PANE
+        name-active: "&a下一页"
+        name-inactive: "&8下一页"
+        lore-active:
+          - ""
+          - "&6点击&f翻至下一页"
+          - ""
+        lore-inactive: [ ]
+        type: NEXTPAGE
+        slots: [ 50 ]
+        glowing-active: false
+        glowing-inactive: false
+        custom-model-data: -1
+      prev-page:
+        material-active: LIME_STAINED_GLASS_PANE
+        material-inactive: GRAY_STAINED_GLASS_PANE
+        name-active: "&a上一页"
+        name-inactive: "&8上一页"
+        lore-active:
+          - ""
+          - "&6点击&f翻至上一页"
+          - ""
+        lore-inactive: [ ]
+        type: PREVPAGE
+        slots: [ 48 ]
+        glowing-active: false
+        glowing-inactive: false
+        custom-model-data: -1
+      back:
+        material: ORANGE_STAINED_GLASS_PANE
+        name: "&6返回主菜单"
+        lore:
+          - ""
+          - "&6点击&f以返回主菜单界面"
+          - ""
+        type: BACK
+        slots: [ 49 ]
+        glowing: false
+        custom-model-data: -1
+  page-spell:
+    title: "&b魔咒 | &c{page}&8/&c{maxpages}"
+    size: 54
+    buttons:
+      enchantment:
+        material: 'head:eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOGJlMmJhZjQwZmQ4NWViNTczZmU1YjJlNWI2Yzg4MTdjZjUwZjg4M2Q5NTc2OTQxNTgwN2FiMDcyODhhNDdjZCJ9fX0='
+        name: "&b{name} &8lvl.{max-level}"
+        lore:
+          - ""
+          - "&8稀有度：{rarity}"
+          - ""
+          - "&f{description}"
+          - ""
+          - "&8适用于："
+          - "&b{apply-on}"
+          - " "
+          - "&8冲突："
+          - "&c{conflicts}"
+          - ""
+          - "&8获取方式："
+          - " &6* &7附魔台：&r{enchantment_table}"
+          - " &6* &7村民交易：&r{villager_trading}"
+          - " &6* &7世界战利品：&r{world_loot}"
+          - ""
+          - "&8砂轮祛魔：&r{grindstonable}"
+          - ""
+        type: ENCHANTMENT
+        slots: [ 10,11,12,13,14,15,16,19,20,21,22,23,24,25,28,29,30,31,32,33,34,37,38,39,40,41,42,43 ]
+        glowing: false
+        custom-model-data: -1
+      misc:
+        material: LIGHT_BLUE_STAINED_GLASS_PANE
+        name: "&7"
+        lore: [ ]
+        type: MISC
+        slots: [ 0,1,2,3,4,5,6,7,8,9,17,18,26,27,35,36,44,45,46,47,51,52,53 ]
+        glowing: false
+        custom-model-data: -1
+      next-page:
+        material-active: LIME_STAINED_GLASS_PANE
+        material-inactive: GRAY_STAINED_GLASS_PANE
+        name-active: "&a下一页"
+        name-inactive: "&8下一页"
+        lore-active:
+          - ""
+          - "&6点击&f翻至下一页"
+          - ""
+        lore-inactive: [ ]
+        type: NEXTPAGE
+        slots: [ 50 ]
+        glowing-active: false
+        glowing-inactive: false
+        custom-model-data: -1
+      prev-page:
+        material-active: LIME_STAINED_GLASS_PANE
+        material-inactive: GRAY_STAINED_GLASS_PANE
+        name-active: "&a上一页"
+        name-inactive: "&8上一页"
+        lore-active:
+          - ""
+          - "&6点击&f翻至上一页"
+          - ""
+        lore-inactive: [ ]
+        type: PREVPAGE
+        slots: [ 48 ]
+        glowing-active: false
+        glowing-inactive: false
+        custom-model-data: -1
+      back:
+        material: ORANGE_STAINED_GLASS_PANE
+        name: "&6返回主菜单"
+        lore:
+          - ""
+          - "&6点击&f以返回主菜单界面"
+          - ""
+        type: BACK
+        slots: [ 49 ]
+        glowing: false
+        custom-model-data: -1
+  search:
+    title: "&8搜索结果：&2{query} &8| &c{page}&8/&c{maxpages}"
+    size: 54
+    buttons:
+      enchantment:
+        material: 'head:eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOGJlMmJhZjQwZmQ4NWViNTczZmU1YjJlNWI2Yzg4MTdjZjUwZjg4M2Q5NTc2OTQxNTgwN2FiMDcyODhhNDdjZCJ9fX0='
+        name: "&b{name} &8lvl.{max-level}"
+        lore:
+          - ""
+          - "&8稀有度：{rarity}"
+          - ""
+          - "&f{description}"
+          - ""
+          - "&8适用于："
+          - "&b{apply-on}"
+          - " "
+          - "&8冲突："
+          - "&c{conflicts}"
+          - ""
+          - "&8获取方式："
+          - " &6* &7附魔台：&r{enchantment_table}"
+          - " &6* &7村民交易：&r{villager_trading}"
+          - " &6* &7世界战利品：&r{world_loot}"
+          - ""
+          - "&8砂轮祛魔：&r{grindstonable}"
+          - ""
+        type: ENCHANTMENT
+        slots: [ 10,11,12,13,14,15,16,19,20,21,22,23,24,25,28,29,30,31,32,33,34,37,38,39,40,41,42,43 ]
+        glowing: false
+        custom-model-data: -1
+      misc:
+        material: CYAN_STAINED_GLASS_PANE
+        name: "&7"
+        lore: [ ]
+        type: MISC
+        slots: [ 0,1,2,3,4,5,6,7,8,9,17,18,26,27,35,36,44,45,46,47,51,52,53 ]
+        glowing: false
+        custom-model-data: -1
+      next-page:
+        material-active: LIME_STAINED_GLASS_PANE
+        material-inactive: GRAY_STAINED_GLASS_PANE
+        name-active: "&a下一页"
+        name-inactive: "&8下一页"
+        lore-active:
+          - ""
+          - "&6点击&f翻至下一页"
+          - ""
+        lore-inactive: [ ]
+        type: NEXTPAGE
+        slots: [ 50 ]
+        glowing-active: false
+        glowing-inactive: false
+        custom-model-data: -1
+      prev-page:
+        material-active: LIME_STAINED_GLASS_PANE
+        material-inactive: GRAY_STAINED_GLASS_PANE
+        name-active: "&a上一页"
+        name-inactive: "&8上一页"
+        lore-active:
+          - ""
+          - "&6点击&f翻至上一页"
+          - ""
+        lore-inactive: [ ]
+        type: PREVPAGE
+        slots: [ 48 ]
+        glowing-active: false
+        glowing-inactive: false
+        custom-model-data: -1
+      back:
+        material: ORANGE_STAINED_GLASS_PANE
+        name: "&6返回主菜单"
+        lore:
+          - ""
+          - "&6点击&f以返回主菜单界面"
+          - ""
+        type: BACK
+        slots: [ 49 ]
+        glowing: false
+        custom-model-data: -1
+
+

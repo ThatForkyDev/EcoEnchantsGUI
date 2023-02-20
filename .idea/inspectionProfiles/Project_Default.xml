@@ -1,0 +1,25 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="AutoCloseableResource" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="METHOD_MATCHER_CONFIG" value="java.util.Formatter,format,java.io.Writer,append,com.google.common.base.Preconditions,checkNotNull,org.hibernate.Session,close,java.io.PrintWriter,printf,java.io.PrintStream,printf,net.tridentgames.datalog.bukkit.manager.logging.LoggingManager,registerRollbacker|registerSaver,net.tridentgames.commons.api.scheduler.pool.PoolContext,registerForkJoinPool,net.tridentgames.playerprofile.api.manager.profile.ProfileManager,addJoinProfile|addLoadableProfile,net.tridentgames.commons.api.event.Events,hook,net.tridentgames.commons.api.registry.Instances,register,net.tridentgames.commons.api.collection.terminable.TerminableHashMap,putAsBindable,net.tridentgames.commons.api.scheduler.IScheduler,runRepeating,net.tridentgames.enchantments.bukkit.enchantment.CustomEnchantment.Builder,build" />
+    </inspection_tool>
+    <inspection_tool class="CodeBlock2Expr" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="LocalCanBeFinal" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="REPORT_VARIABLES" value="true" />
+      <option name="REPORT_PARAMETERS" value="false" />
+      <option name="REPORT_CATCH_PARAMETERS" value="false" />
+    </inspection_tool>
+    <inspection_tool class="MissortedModifiers" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="m_requireAnnotationsFirst" value="false" />
+      <option name="typeUseWithType" value="true" />
+    </inspection_tool>
+    <inspection_tool class="RedundantStringFormatCall" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="UnnecessaryFinalOnLocalVariableOrParameter" enabled="false" level="WARNING" enabled_by_default="false">
+      <option name="reportParameters" value="false" />
+    </inspection_tool>
+    <inspection_tool class="UnqualifiedFieldAccess" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="UnqualifiedMethodAccess" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="UnusedReturnValue" enabled="false" level="WARNING" enabled_by_default="false" />
+  </profile>
+</component>

@@ -41,10 +41,13 @@ public class SearchPage {
     public static final String name = "Search";
 
     public SearchPage(String searchString){
-        this.query = searchString;
         boolean ignore = getConfigBoolean("settings.ignore-disabled-enchantments");
         List<String> searchTo = getConfigStringList("settings.search-in");
         enchantments = EcoEnchants.values().stream().filter(ecoEnchant -> {
+            if (searchString.startsWith("rarity:")){
+                return ecoEnchant.getEnchantmentRarity().getName().toLowerCase().equals(searchString.replace("rarity:", "").toLowerCase());
+            }
+
             try {
                 if (!ignore || ecoEnchant.isEnabled()){
                     return (searchTo.contains("NAME") && EnchantmentCache.getEntry(ecoEnchant).getRawName().toLowerCase().contains(MessageUtils.toCheckMessage(searchString))) ||
@@ -59,6 +62,7 @@ public class SearchPage {
             return false;
         }).collect(Collectors.toList());
 
+        this.query = searchString.replace("rarity:", "");
     }
 
     public int getMaxPages(){
